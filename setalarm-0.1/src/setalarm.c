@@ -46,9 +46,9 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	fprintf(stderr, "input string = %s\n", str);
+//	fprintf(stderr, "input string = %s\n", str);
 
-//	sscanf(str, "%02d:%02d:%02d %d", &hours, &minutes, &seconds, &day);
+	sscanf(str, "%02d:%02d:%02d %d", &hours, &minutes, &seconds, &day);
 
 	if (	!(   (hours >= 0 && hours < 24 ) 
 			&& (minutes >= 0 && minutes < 60) 
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 	tmp.tm_hour = rtc_tm.tm_hour;
 	tmp.tm_min = rtc_tm.tm_min;
 	tmp.tm_sec = rtc_tm.tm_sec;
-    	mktime(&tmp);			// this will fill up the tmp.tm_wday field
+    mktime(&tmp);			// this will fill up the tmp.tm_wday field
 
 	int current_secs = rtc_tm.tm_hour * 3600 +rtc_tm.tm_min * 60 + rtc_tm.tm_sec;
 	int alarm_secs = hours * 3600 + minutes * 60 + seconds;
